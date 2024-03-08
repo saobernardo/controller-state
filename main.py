@@ -20,11 +20,15 @@ def on_error(error):
 def on_battery_lower_than(battery_level):
   print(f'Battery at {battery_level}. Please, recharge')
 
+def on_battery_charging(battery_level):
+  print(f'Battery Charging, currently at {battery_level}')
+
 controller.activate()
 
 try:
   while is_running:
-    controller.battery.on_lower_than(20, on_battery_lower_than)
+    controller.battery.on_charging(on_battery_charging)
+    controller.battery.on_lower_than(15, on_battery_lower_than)
     sleep(0.001)
 except KeyboardInterrupt:
   controller.deactivate()
