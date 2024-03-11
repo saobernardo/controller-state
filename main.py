@@ -7,6 +7,10 @@ joystick.pop(0)
 if len(joystick) == 0:
   sys.exit('Jostick for monitoring not given')
 
-if joystick[0] == 'dualsense' or joystick[0] == 'DualSense':
-  print("Executando joystick dualsense")
-  subprocess.run(["python", "dualsense.py"])
+try:
+  if joystick[0] == 'dualsense' or joystick[0] == 'DualSense':
+    print("Executando joystick dualsense")
+    subprocess.run(["python", "dualsense.py"])
+
+except KeyboardInterrupt:
+  print('Fim de execução')
