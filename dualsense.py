@@ -23,7 +23,7 @@ def on_battery_lower_than(battery_level):
   #print(f'Battery at {battery_level}. Please, recharge')
   notification.notify(
     title = "Low Battery: DualSense",
-    message = "Battery is below 10%. Please, recharge",
+    message = f"Battery is below {battery_level}%. Please, recharge",
     app_name = "Controller State"
   )
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
   while is_running:
     controller.battery.on_charging(on_battery_charging)
-    controller.battery.on_lower_than(10, on_battery_lower_than)
+    controller.battery.on_lower_than(15, on_battery_lower_than)
     sleep(0.001)
 
   controller.deactivate()
